@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import DailyRecord from "./Pages/DailyRecord";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+import dayjs from "dayjs";
+import styled from "styled-components";
+import Layout from "./Components/Layout";
 
-function App() {
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault("America/Los_Angeles");
+
+dayjs.extend(localizedFormat);
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <DailyRecord />
+    </Layout>
   );
 }
-
-export default App;
